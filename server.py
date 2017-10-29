@@ -5,7 +5,7 @@ import pickle
 
 class Servidor():
 	"""docstring for Servidor"""
-	def __init__(self, host="192.168.0.22" ,port=50007):
+	def __init__(self, host="192.168.0.2" ,port=50007):
 
 		self.clientes = []
 
@@ -14,18 +14,18 @@ class Servidor():
 		self.sock.listen(10)
 		self.sock.setblocking(False)
 
-		aceptar = threading.Thread(target=self.aceitarCon)
-		procesar = threading.Thread(target=self.processarCon)
+		aceitar = threading.Thread(target=self.aceitarCon)
+		processar = threading.Thread(target=self.processarCon)
 		
-		aceptar.daemon = True
-		aceptar.start()
+		aceitar.daemon = True
+		aceitar.start()
 
-		procesar.daemon = True
-		procesar.start()
+		processar.daemon = True
+		processar.start()
 
 		while True:
 			msg = input('->')
-			if msg == 'salir':
+			if msg == 'sair':
 				self.sock.close()
 				sys.exit()
 			else:
@@ -40,7 +40,7 @@ class Servidor():
 			except:
 				self.clientes.remove(c)
 
-	def aceptarCon(self):
+	def aceitarCon(self):
 		print("aceitarCon iniciado")
 		while True:
 			try:
@@ -50,7 +50,7 @@ class Servidor():
 			except:
 				pass
 
-	def procesarCon(self):
+	def processarCon(self):
 		print("processarCon iniciado")
 		while True:
 			if len(self.clientes) > 0:

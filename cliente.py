@@ -5,7 +5,7 @@ import pickle
 
 class Cliente():
 	"""docstring for Cliente"""
-	def __init__(self, host='192.168.0.22', port=50007):
+	def __init__(self, host='192.168.0.2', port=50007):
 		
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)		
 		self.sock.connect((host, port))
@@ -18,7 +18,7 @@ class Cliente():
 
 		while True:
 			msg = input('->')
-			if msg != 'salir':
+			if msg != 'sair':
 				self.send_msg(msg)
 			else:
 				self.sock.close()
