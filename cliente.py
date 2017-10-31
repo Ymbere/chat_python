@@ -4,7 +4,7 @@ import sys
 import pickle
 
 class Cliente():
-	"""docstring for Cliente"""
+	
 	def __init__(self, host='10.114.79.40', port=52413):
 		
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)		
